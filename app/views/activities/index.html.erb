@@ -1,0 +1,16 @@
+<h1 class="text-center">List All Activity</h1>
+<div class="container">
+  <% @activity.each do |activity| %>
+    <div class="card text-center center-card" style="width: 18rem;">
+      <img class="card-img-top" src="https://via.placeholder.com/400x200" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text"><%= activity.message %></p>
+        <div class="d-flex justify-content-sm-around">
+          <%= link_to "Edit", edit_activity_path(activity), class: "btn btn-primary" %>
+          <%= link_to "Detail", activity_path(activity), class: "btn btn-primary" %>
+          <%= link_to "Delete", activity_path(activity), method: :delete, data: {confirm: "Are you sure for delete this activity?"} , class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
