@@ -1,4 +1,7 @@
 <h1 class="text-center">List All Activity</h1>
+<div class="d-flex justify-content-center">
+  <%= link_to "Create new activity", new_activity_path, class:'btn btn-primary' %>
+</div>
 <div class="container">
   <% @activity.each do |activity| %>
     <div class="card text-center center-card" style="width: 18rem;">
