@@ -1,0 +1,16 @@
+<h1 class="text-center">All User</h1>
+
+<div class="container">
+  <% @users.each do |user| %>
+    <div class="card text-center center-card" style="width: 18rem;">
+      <%= link_to gravatar_for(user), user_path(user), class:"card-img-top"%>
+      <div class="card-body">
+        <%= link_to user.first_name + " " + user.last_name, user_path(user), class:"card-text" %>
+        <p class="card-text"><%= pluralize(user.activities.count, "activity") if user.activities %></p>
+      </div>
+    </div>
+  <% end %>
+  <div class="d-flex justify-content-center">
+    <%= will_paginate  %>
+  </div>
+</div>

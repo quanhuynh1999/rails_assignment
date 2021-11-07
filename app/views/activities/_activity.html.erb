@@ -1,0 +1,17 @@
+
+<div class="container">
+  <% obj.each do |activity| %>
+    <div class="card text-center center-card" style="width: 18rem;">
+      <img class="card-img-top" src="https://via.placeholder.com/400x200" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text"><%= activity.message %></p>
+        <% if activity.user %>
+          <p class="card-text">Created by: <%= activity.user.email %></p>
+        <% end %>
+        <div class="d-flex justify-content-sm-around">
+          <%= link_to "Detail", activity_path(activity), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

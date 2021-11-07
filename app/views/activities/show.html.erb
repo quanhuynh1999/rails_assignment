@@ -1,2 +1,22 @@
-<h1 class="text-center">Show selected activity</h1>
-<p><%= @activity.message %></p>
+<h1 class="text-center">Information Detail Activity</h1>
+<% if @activity.user %>
+  <div class="card text-center center-card" style="width: 18rem;">
+    <%= link_to gravatar_for(@activity.user), user_path(@activity.user), class:"card-img-top"%>
+    <div class="card-body">
+      <%= link_to @activity.user.first_name + " " + @activity.user.last_name, user_path(@activity.user), class:"card-text" %>
+      <p class="card-text"><%= pluralize(@activity.user.activities.count, "activity") if @activity.user.activities %></p>
+    </div>
+  </div>
+<% end %>
+<div class="card text-center center-card" style="width: 18rem;">
+  <img class="card-img-top" src="https://via.placeholder.com/400x200" alt="Card image cap">
+  <div class="card-body">
+    <p class="card-text"><%= @activity.message %></p>
+    <% if logged_in? && current_user == @activity.user %>
+      <div class="d-flex justify-content-sm-around">
+        <%= link_to "Edit", edit_activity_path(@activity), class: "btn btn-primary" %>
+        <%= link_to "Delete", activity_path(@activity), method: :delete, data: {confirm: "Are you sure for delete this activity?"} , class: "btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
+</div>
